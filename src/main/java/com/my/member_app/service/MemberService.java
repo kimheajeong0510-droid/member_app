@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -50,5 +51,13 @@ public class MemberService {
 
     public void delete(Long deleteId) {
         memberRepository.deleteById(deleteId);
+    }
+
+    public MemberDto findById(Long updateId) {
+        Optional<Member> member = memberRepository.findById(updateId);
+        // Optional로 받은 객체가 비어있으면
+        if (member.isPresent()){
+            return MemberDto.toDto(member.get());
+        } else return null;
     }
 }
