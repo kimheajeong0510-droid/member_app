@@ -25,4 +25,11 @@ public class MemberDto {
         return member;
     }
     // MemberEntity -> MemberDto(DTO)
+    public static MemberDto toDto(Member member){
+        return new MemberDto(member.getId(),
+                member.getName(),
+                member.getAge(),
+                member.getAddress()
+        );
+    }
 }
